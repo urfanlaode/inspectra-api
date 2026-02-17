@@ -26,4 +26,9 @@ class ConditionRepository implements ConditionRepositoryInterface
     {
         return Condition::where('name', $name)->first();
     }
+
+    public function allSelect()
+    {
+        return Condition::select(['id', 'name'])->get();
+    }
 }

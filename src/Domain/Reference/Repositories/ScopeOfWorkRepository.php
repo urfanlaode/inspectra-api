@@ -23,4 +23,11 @@ class ScopeOfWorkRepository implements ScopeOfWorkRepositoryInterface
             ],
         );
     }
+
+    public function allSelect()
+    {
+        return ScopeOfWork::with('service_type:id,name')
+            ->select(['id', 'name', 'service_type_id'])
+            ->get();
+    }
 }

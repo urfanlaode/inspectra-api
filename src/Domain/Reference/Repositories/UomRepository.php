@@ -26,4 +26,9 @@ class UomRepository implements UomRepositoryInterface
     {
         return Uom::where('name', $name)->first();
     }
+
+    public function allSelect()
+    {
+        return Uom::select(['id', 'name'])->get();
+    }
 }

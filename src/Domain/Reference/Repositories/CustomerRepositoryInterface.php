@@ -9,4 +9,5 @@ interface CustomerRepositoryInterface
 {
     public function upsertFromData(CustomerData $data): void;
     public function findByName(string $name): ?Customer;
+    public function allSelect();
 }

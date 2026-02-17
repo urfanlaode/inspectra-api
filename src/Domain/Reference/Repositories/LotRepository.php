@@ -27,4 +27,26 @@ class LotRepository implements LotRepositoryInterface
             ],
         );
     }
+
+    public function allSelect()
+    {
+        return Lot::with([
+            'item:id,name',
+            'allocation:id,name',
+            'owner:id,name',
+            'condition:id,name',
+            'uom:id,name',
+        ])
+            ->select([
+                'id',
+                'lot_number',
+                'qty',
+                'item_id',
+                'allocation_id',
+                'owner_id',
+                'condition_id',
+                'uom_id',
+            ])
+            ->get();
+    }
 }

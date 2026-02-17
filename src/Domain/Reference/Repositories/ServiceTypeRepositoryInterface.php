@@ -9,4 +9,5 @@ interface ServiceTypeRepositoryInterface
 {
     public function upsertFromData(ServiceTypeData $data): void;
     public function findByName(string $name): ?ServiceType;
+    public function allSelect();
 }

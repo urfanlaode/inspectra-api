@@ -9,4 +9,5 @@ interface AllocationRepositoryInterface
 {
     public function upsertFromData(AllocationData $data): void;
     public function findByName(string $name): ?Allocation;
+    public function allSelect();
 }

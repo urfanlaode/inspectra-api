@@ -9,4 +9,5 @@ interface ItemCategoryRepositoryInterface
 {
     public function upsertFromData(ItemCategoryData $data): void;
     public function findByName(string $name): ?ItemCategory;
+    public function allSelect();
 }

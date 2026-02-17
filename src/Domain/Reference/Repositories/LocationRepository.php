@@ -26,4 +26,9 @@ class LocationRepository implements LocationRepositoryInterface
     {
         return Location::where('name', $name)->first();
     }
+
+    public function allSelect()
+    {
+        return Location::select(['id', 'name'])->get();
+    }
 }

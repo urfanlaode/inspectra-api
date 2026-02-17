@@ -32,4 +32,11 @@ class ItemRepository implements ItemRepositoryInterface
     {
         return Item::where('id', $id)->first();
     }
+
+    public function allSelect()
+    {
+        return Item::with('item_category:id,name')
+            ->select(['id', 'name', 'item_category_id'])
+            ->get();
+    }
 }

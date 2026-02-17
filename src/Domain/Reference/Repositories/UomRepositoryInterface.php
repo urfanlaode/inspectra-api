@@ -9,4 +9,5 @@ interface UomRepositoryInterface
 {
     public function upsertFromData(UomData $data): void;
     public function findByName(string $name): ?Uom;
+    public function allSelect();
 }

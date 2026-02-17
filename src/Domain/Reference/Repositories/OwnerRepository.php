@@ -26,4 +26,9 @@ class OwnerRepository implements OwnerRepositoryInterface
     {
         return Owner::where('name', $name)->first();
     }
+
+    public function allSelect()
+    {
+        return Owner::select(['id', 'name'])->get();
+    }
 }

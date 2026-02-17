@@ -9,4 +9,5 @@ interface OwnerRepositoryInterface
 {
     public function upsertFromData(OwnerData $data): void;
     public function findByName(string $name): ?Owner;
+    public function allSelect();
 }

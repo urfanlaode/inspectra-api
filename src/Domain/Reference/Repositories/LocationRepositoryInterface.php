@@ -9,4 +9,5 @@ interface LocationRepositoryInterface
 {
     public function upsertFromData(LocationData $data): void;
     public function findByName(string $name): ?Location;
+    public function allSelect();
 }

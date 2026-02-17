@@ -4,6 +4,7 @@ namespace Domain\Reference\Repositories;
 
 use Domain\Reference\Data\ServiceTypeData;
 use Domain\Reference\Models\ServiceType;
+use Illuminate\Support\Collection;
 
 class ServiceTypeRepository implements ServiceTypeRepositoryInterface
 {
@@ -25,5 +26,10 @@ class ServiceTypeRepository implements ServiceTypeRepositoryInterface
     public function findByName(string $name): ?ServiceType
     {
         return ServiceType::where('name', $name)->first();
+    }
+
+    public function allSelect(): Collection
+    {
+        return ServiceType::select(['id', 'name'])->get();
     }
 }

@@ -7,4 +7,5 @@ use Domain\Reference\Data\ScopeOfWorkData;
 interface ScopeOfWorkRepositoryInterface
 {
     public function upsertFromData(ScopeOfWorkData $data): void;
+    public function allSelect();
 }

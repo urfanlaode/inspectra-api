@@ -8,7 +8,7 @@ class Item extends Model
 {
     protected $fillable = ['id', 'name', 'item_category_id'];
 
-    public function category()
+    public function item_category()
     {
         return $this->belongsTo(ItemCategory::class, 'item_category_id');
     }

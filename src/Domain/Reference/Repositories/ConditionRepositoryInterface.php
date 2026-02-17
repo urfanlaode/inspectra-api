@@ -9,4 +9,5 @@ interface ConditionRepositoryInterface
 {
     public function upsertFromData(ConditionData $data): void;
     public function findByName(string $name): ?Condition;
+    public function allSelect();
 }

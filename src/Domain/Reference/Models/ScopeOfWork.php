@@ -8,7 +8,7 @@ class ScopeOfWork extends Model
 {
     protected $fillable = ['id', 'service_type_id', 'name', 'description'];
 
-    public function serviceType()
+    public function service_type()
     {
         return $this->belongsTo(ServiceType::class);
     }

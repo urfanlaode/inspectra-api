@@ -26,4 +26,9 @@ class AllocationRepository implements AllocationRepositoryInterface
     {
         return Allocation::where('name', $name)->first();
     }
+
+    public function allSelect()
+    {
+        return Allocation::select(['id', 'name'])->get();
+    }
 }

@@ -26,4 +26,9 @@ class CustomerRepository implements CustomerRepositoryInterface
     {
         return Customer::where('name', $name)->first();
     }
+
+    public function allSelect()
+    {
+        return Customer::select(['id', 'name'])->get();
+    }
 }
