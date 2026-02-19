@@ -50,4 +50,9 @@ class ReferenceService
     {
         return $this->lotRepo->allSelect();
     }
+
+    public function items()
+    {
+        return $this->itemRepo->allSelect();
+    }
 }

@@ -7,4 +7,5 @@ Route::get('dropdowns', [ReferenceController::class, 'dropdowns'])->name(
     'dropdowns',
 );
 Route::get('lots', [ReferenceController::class, 'lots'])->name('lots');
+Route::get('items', [ReferenceController::class, 'items'])->name('items');
 Route::post('imports', [ImportController::class, 'import'])->name('import');
