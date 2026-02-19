@@ -24,4 +24,11 @@ class ReferenceController extends Controller
 
         return ApiResponse::ok($data);
     }
+
+    public function items(Request $request): mixed
+    {
+        $data = $this->referenceService->items();
+
+        return ApiResponse::ok($data);
+    }
 }
