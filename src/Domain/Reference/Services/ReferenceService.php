@@ -30,14 +30,13 @@ class ReferenceService
         protected CustomerRepository $customerRepo,
     ) {}
 
-    public function index()
+    public function dropdowns()
     {
         return [
             'service_types' => $this->serviceTypeRepo->allSelect(),
             'scope_of_works' => $this->scopeRepo->allSelect(),
             'item_categories' => $this->categoryRepo->allSelect(),
             'items' => $this->itemRepo->allSelect(),
-            'lots' => $this->lotRepo->allSelect(),
             'allocations' => $this->allocationRepo->allSelect(),
             'owners' => $this->ownerRepo->allSelect(),
             'conditions' => $this->conditionRepo->allSelect(),
@@ -45,5 +44,10 @@ class ReferenceService
             'locations' => $this->locationRepo->allSelect(),
             'customers' => $this->customerRepo->allSelect(),
         ];
+    }
+
+    public function lots()
+    {
+        return $this->lotRepo->allSelect();
     }
 }

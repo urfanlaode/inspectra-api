@@ -11,9 +11,16 @@ class ReferenceController extends Controller
 {
     public function __construct(protected ReferenceService $referenceService) {}
 
-    public function index(Request $request): mixed
+    public function dropdowns(Request $request): mixed
     {
-        $data = $this->referenceService->index();
+        $data = $this->referenceService->dropdowns();
+
+        return ApiResponse::ok($data);
+    }
+
+    public function lots(Request $request): mixed
+    {
+        $data = $this->referenceService->lots();
 
         return ApiResponse::ok($data);
     }
