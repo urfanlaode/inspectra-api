@@ -11,7 +11,7 @@ class ApiResponse
 {
     public static function ok(
         mixed $data = null,
-        string $message = null,
+        ?string $message = null,
         int $statusCode = 200,
     ): JsonResponse {
         $response = [
@@ -31,7 +31,7 @@ class ApiResponse
         string $message,
         int $statusCode = 500,
         mixed $errors = null,
-        string $errorCode = null,
+        ?string $errorCode = null,
     ): JsonResponse {
         $response = [
             'ok' => false,
@@ -53,7 +53,7 @@ class ApiResponse
     public static function paginate(
         mixed $res,
         PaginationMeta $meta,
-        string $message = null,
+        ?string $message = null,
         int $statusCode = 200,
     ): JsonResponse {
         $response = [
