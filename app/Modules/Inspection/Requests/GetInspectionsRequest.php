@@ -22,19 +22,15 @@ class GetInspectionsRequest extends FormRequest
     public function rules()
     {
         return [
-            'type' => [
-                'nullable',
-                'string',
-                'in:open,ready_for_review,completed',
-            ],
+            'status' => ['nullable', 'string', 'in:open,in_review,completed'],
         ];
     }
 
     public function messages(): array
     {
         return [
-            'type.in' =>
-                'The type field must be one of the following values: open, ready_for_review, completed.',
+            'status.in' =>
+                'The type field must be one of the following values: open, in_review, completed.',
         ];
     }
 }

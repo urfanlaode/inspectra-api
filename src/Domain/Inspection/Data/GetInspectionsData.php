@@ -7,17 +7,17 @@ use Spatie\LaravelData\Data;
 
 class GetInspectionsData extends Data
 {
-    public function __construct(public ?string $type = null) {}
+    public function __construct(public ?string $status = null) {}
 
     public function statuses(): ?array
     {
-        if (!$this->type) {
+        if (!$this->status) {
             return null;
         }
 
-        return match ($this->type) {
+        return match ($this->status) {
             'open' => [InspectionStatus::DRAFT, InspectionStatus::NEW],
-            'ready_for_review' => [InspectionStatus::READY_FOR_REVIEW],
+            'in_review' => [InspectionStatus::READY_FOR_REVIEW],
             'completed' => [InspectionStatus::COMPLETED],
             default => null,
         };
