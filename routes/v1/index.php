@@ -10,6 +10,10 @@ Route::prefix('references')
     ->name('references.')
     ->group(base_path('routes/v1/reference.php'));
 
+Route::prefix('inspections')
+    ->name('inspections.')
+    ->group(base_path('routes/v1/inspection.php'));
+
 Route::fallback(function () {
     return ApiResponse::notFound('Resource not found');
 })->name('fallback');
