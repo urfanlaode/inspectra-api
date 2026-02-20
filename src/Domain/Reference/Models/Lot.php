@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Lot extends Model
 {
+    protected $casts = [
+        'qty' => 'integer',
+    ];
+
     protected $fillable = [
         'id',
         'item_id',
