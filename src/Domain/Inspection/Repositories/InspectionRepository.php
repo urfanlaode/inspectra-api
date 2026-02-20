@@ -2,6 +2,7 @@
 
 namespace Domain\Inspection\Repositories;
 
+use Domain\Inspection\Data\GetInspectionsData;
 use Domain\Inspection\Enums\InspectionStatus;
 use Domain\Inspection\Models\Inspection;
 use Domain\Inspection\Data\InspectionData;
@@ -107,9 +108,9 @@ class InspectionRepository implements InspectionRepositoryInterface
         });
     }
 
-    public function allWithLots()
+    public function allWithLots(?GetInspectionsData $data = null)
     {
-        return Inspection::with([
+        $query = Inspection::with([
             'service_type:id,name',
             'scope_of_work:id,name',
             'location:id,name',
@@ -121,7 +122,15 @@ class InspectionRepository implements InspectionRepositoryInterface
                     },
                 ]);
             },
-        ])->get();
+        ]);
+
+        $statuses = $data?->statuses();
+
+        if (!empty($statuses)) {
+            $query->whereIn('status', $statuses);
+        }
+
+        return $query->get();
     }
 
     public function findByIdWithLots(int $id)

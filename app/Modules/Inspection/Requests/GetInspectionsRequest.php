@@ -1,0 +1,40 @@
+<?php
+
+namespace App\Modules\Inspection\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class GetInspectionsRequest extends FormRequest
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     */
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     */
+    public function rules()
+    {
+        return [
+            'type' => [
+                'nullable',
+                'string',
+                'in:open,ready_for_review,completed',
+            ],
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'type.in' =>
+                'The type field must be one of the following values: open, ready_for_review, completed.',
+        ];
+    }
+}

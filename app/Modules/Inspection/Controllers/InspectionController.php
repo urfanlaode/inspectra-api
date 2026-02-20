@@ -8,6 +8,8 @@ use Domain\Inspection\Data\InspectionData;
 use Domain\Inspection\Services\InspectionService;
 use App\Modules\Inspection\Requests\StoreInspectionRequest;
 use Illuminate\Http\Request;
+use App\Modules\Inspection\Requests\GetInspectionsRequest;
+use Domain\Inspection\Data\GetInspectionsData;
 
 class InspectionController extends Controller
 {
@@ -33,9 +35,11 @@ class InspectionController extends Controller
         return ApiResponse::ok($single, 'Inspection updated successfully');
     }
 
-    public function allInspectionsWithLots(Request $request)
+    public function allInspectionsWithLots(GetInspectionsRequest $request)
     {
-        $data = $this->inspectionService->allInspectionsWithLots();
+        $dto = GetInspectionsData::from($request->validated());
+
+        $data = $this->inspectionService->allInspectionsWithLots($dto);
 
         // TODO: paginate
 

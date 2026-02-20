@@ -2,7 +2,9 @@
 
 namespace Domain\Inspection\Services;
 
+use Domain\Inspection\Data\GetInspectionsData;
 use Domain\Inspection\Data\InspectionData;
+use Domain\Inspection\Enums\InspectionStatus;
 use Domain\Inspection\Models\Inspection;
 use Domain\Inspection\Repositories\InspectionRepository;
 use Symfony\Component\HttpKernel\Exception\UnprocessableEntityHttpException;
@@ -31,9 +33,9 @@ class InspectionService
         return $this->inspectionRepository->updateFromData($inspection, $data);
     }
 
-    public function allInspectionsWithLots()
+    public function allInspectionsWithLots(?GetInspectionsData $data = null)
     {
-        return $this->inspectionRepository->allWithLots();
+        return $this->inspectionRepository->allWithLots($data);
     }
 
     public function findInspectionWithLots(int $id): ?Inspection
