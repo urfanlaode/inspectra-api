@@ -25,9 +25,7 @@ class InspectionService
         $inspection = $this->inspectionRepository->findById($id);
 
         if (!$inspection->status->isEditable()) {
-            throw new UnprocessableEntityHttpException(
-                'Inspection is not editable',
-            );
+            abort(422, 'Inspection is not editable');
         }
 
         return $this->inspectionRepository->updateFromData($inspection, $data);
