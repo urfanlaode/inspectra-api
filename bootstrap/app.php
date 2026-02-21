@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Responses\ApiResponse;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -16,15 +17,18 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware): void {
         //
     })
-    ->withExceptions(function (Exceptions $exceptions): void {
-        $exceptions->render(function (
-            \Illuminate\Validation\ValidationException $e,
-            Request $request,
-        ) {
-            return \App\Http\Responses\ApiResponse::validationError(
-                $e->errors(),
-                $e->getMessage(),
-            );
+    ->withExceptions(function (Exceptions $exceptions) {
+        $exceptions->render(function (\Throwable $e, $request) {
+            $statusCode = 500;
+
+            if (
+                $e instanceof
+                \Symfony\Component\HttpKernel\Exception\HttpException
+            ) {
+                $statusCode = $e->getStatusCode();
+            }
+
+            return ApiResponse::error($e->getMessage(), $statusCode);
         });
     })
     ->create();
